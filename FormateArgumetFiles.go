@@ -1,7 +1,5 @@
 package main
 
-//complete path of the file with file name
-
 import (
 	"errors"
 	"fmt"
