@@ -20,7 +20,7 @@ func FormateFile(path string) error {
 	if isError(err) {
 		errors.New("error in create file ")
 	}
-	WriteFile(path, formatedText)
+	writeFile(path, formatedText)
 	if isError(err) {
 		errors.New("error in writing file ")
 	}
@@ -78,7 +78,7 @@ func createFile(path string) error {
 	return nil
 }
 
-func WriteFile(path string, text string) error {
+func writeFile(path string, text string) error {
 	// Open file using READ & WRITE permission.
 	var file, err = os.OpenFile(path, os.O_RDWR, 0644)
 	if isError(err) {
