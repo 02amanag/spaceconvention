@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"github.com/02amanag/spaceconvention/spaceconvention"
+	process "spaceconvention/internal"
 )
 
 func main() {
@@ -26,8 +26,6 @@ func main() {
 		log.Println(err)
 	}
 
-	fmt.Println(arrayOfPath)
-
 	for _, filePath := range arrayOfPath {
 		ok := func() bool {
 			for _, exceptionFile := range ExceptionFiles {
@@ -38,12 +36,23 @@ func main() {
 			return true
 		}
 		if ok() {
-			err := spaceconvention.FormateFile(filePath)
-			if err != nil {
-				errors.New(fmt.Sprintln(err) + filePath)
+			isDir := isDirectory(filePath)
+			if !isDir {
+				err := process.FormateFile(filePath)
+				if err != nil {
+					errors.New(fmt.Sprintln(err))
+				}
 			}
 		}
 
 	}
 
+}
+
+func isDirectory(path string) bool {
+	fileInfo, err := os.Stat(path)
+	if err != nil {
+		return false
+	}
+	return fileInfo.IsDir()
 }

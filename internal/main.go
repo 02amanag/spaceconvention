@@ -1,4 +1,4 @@
-package spaceconvention
+package process
 
 import (
 	"errors"

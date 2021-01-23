@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/02amanag/spaceconvention/spaceconvention"
+	process "spaceconvention/internal"
 )
 
 func main() {
@@ -13,8 +13,8 @@ func main() {
 	arrayOfPath := os.Args[1:]
 
 	for _, filePath := range arrayOfPath {
-		err := spaceconvention.FormateFile(filePath)
-		if isError(err) {
+		err := process.FormateFile(filePath)
+		if err != nil {
 			errors.New(fmt.Sprintln(err) + filePath)
 		}
 	}

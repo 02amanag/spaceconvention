@@ -1,3 +1,3 @@
-module github.com/02amanag/spaceconvention
+module spaceconvention
 
 go 1.15
